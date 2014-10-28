@@ -25,7 +25,24 @@ $content = $connection->get('account/verify_credentials');
 
 
 /* Some example calls */
-$connection->get('users/show', array('screen_name' => 'dcs2424'));
+$string = $connection->get('statuses/user_timeline', array('screen_name' => 'iagdotme'));
+
+//print_r($string);
+
+foreach($string as $items)
+    {
+        echo "Time and Date of Tweet: ". $items['created_at']."<br />";
+        echo "Tweet: ". $items['text']."<br />";
+        echo "Tweeted by: ". $items['user']['name']."<br />";
+        echo "Screen name: ". $items['user']['screen_name']."<br />";
+        echo "Followers: ". $items['user']['followers_count']."<br />";
+        echo "Friends: ". $items['user']['friends_count']."<br />";
+        echo "Listed: ". $items['user']['listed_count']."<br />";
+    }
+
+
+
+//$connection->get('users/show', array('screen_name' => 'dcs2424'));
 //$connection->post('statuses/update', array('status' => date(DATE_RFC822)));
 //$connection->post('statuses/destroy', array('id' => 5437877770));
 //$connection->post('friendships/create', array('id' => 9436992));
