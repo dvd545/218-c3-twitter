@@ -74,17 +74,22 @@ $content = $connection->get('account/verify_credentials');
 
 
 /* Some example calls */
-$screen_name = 'iagdotme';
 
 
-$string = $connection->get('statuses/user_timeline', array('screen_name' => 'iagdotme'));
-$string2 = $connection->get('friends/list' , array('screen_name' => 'lifehacker'));
-//print_r($string2);
+$string = $connection->get('statuses/user_timeline', array('screen_name' => 'gizmodo'));
+$string2 = $connection->get('friends/list' , array('screen_name' => 'gizmodo'));
+//$string3 = $connection->get('users/suggestions/:slug/');
+//$post = $connection->post('statuses/update' , array('status' => 'Hello World!'));
+
+
+
 
 $main = Display::show_friends($string2);
 
+//$main2 = Display::print_timeline($string);
 
-//$main = Display::print_timeline($string);
+
+
 //print_r($string);
 
 //require('Classes/Models/autoload.php');
@@ -98,7 +103,7 @@ $main = Display::show_friends($string2);
                     $i=0;
 
         foreach($string2 as $items){
-            print_r($items);
+            //print_r($items);
             $i++;
             $item_num = $i -1;
      
