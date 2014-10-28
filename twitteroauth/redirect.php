@@ -1,6 +1,8 @@
 <?php
 
 /* Start session and load library. */
+
+
 session_start();
 require_once('twitteroauth/twitteroauth.php');
 require_once('config.php');

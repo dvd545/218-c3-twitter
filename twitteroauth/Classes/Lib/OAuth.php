@@ -1,4 +1,7 @@
 <?php
+//namespace Classes\Lib;
+
+
 // vim: foldmethod=marker
 
 /* Generic exception class

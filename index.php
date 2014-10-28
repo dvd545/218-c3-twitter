@@ -3,6 +3,23 @@ ini_set('display_errors', 1);
 
 require_once('TwitterAPIExchange.php');
 
+spl_autoload_register( function ($className) {
+    $className = ltrim($className, '\\');
+    $fileName  = '';
+    $namespace = '';
+    if ($lastNsPos = strrpos($className, '\\')) {
+        $namespace = substr($className, 0, $lastNsPos);
+        $className = substr($className, $lastNsPos + 1);
+        $fileName  = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
+    }
+    $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
+
+    require $fileName;
+});
+
+
+
+
 /** Set access tokens here - see: https://dev.twitter.com/apps/ **/
 $settings = array(
     'oauth_access_token' => "2842654679-ODgbCAmdEEmdnUBPWZlZbtQaFa1aD0tHDSa4jUt",

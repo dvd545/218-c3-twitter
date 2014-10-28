@@ -1,4 +1,6 @@
 <?php
+//namespace Classes\Lib;
+
 
 /*
  * Abraham Williams (abraham@abrah.am) http://abrah.am
@@ -8,6 +10,9 @@
 
 /* Load OAuth lib. You can find it at http://oauth.net */
 require_once('OAuth.php');
+//require('/Classes/Models/autoload.php');
+
+
 
 /**
  * Twitter OAuth class
