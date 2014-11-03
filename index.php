@@ -8,8 +8,6 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
 
-    <title>STANLEY - Free Bootstrap Theme </title>
-
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
 
@@ -64,11 +62,13 @@
                         <div id="collapseOne" class="accordion-body collapse in">
                           <div class="accordion-inner">
                               <?php
-                                    require'autoloader.php';
+                                    require 'autoloader.php';
                                     $url = 'followers/ids.json';
-                                    $getfield = '?screen_name=J7mbo';
-                                    \Classes\TwitterFunctions::getfollowers($url, $getfield);
-                                        
+                                    $getfield = '?screen_name=gizmodo';
+                                    $settings = \Classes\Config::password();
+                                    $object = \Classes\TwitterFunctions::getfollowers($url, $getfield, $settings);
+                                    //\Classes\HtmlFunctions::print_timeline($object);
+                                      print_r($object);                                  
                                     
                                     
     
