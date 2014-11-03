@@ -1,45 +1,116 @@
-<?php
-ini_set('display_errors', 1);
-require'autoloader.php';
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
 
-//require_once('TwitterAPIExchange.php');
+    <title>STANLEY - Free Bootstrap Theme </title>
 
-/** Set access tokens here - see: https://dev.twitter.com/apps/ **/
-$settings = array(
-    'oauth_access_token' => "2842654679-ODgbCAmdEEmdnUBPWZlZbtQaFa1aD0tHDSa4jUt",
-    'oauth_access_token_secret' => "wGHLH6e34aExYuK6mnm98MI0DfL6VJbKwPNTgP7je6aNh",
-    'consumer_key' => "YwaULrPwIYGqpShl74VxtlzRX",
-    'consumer_secret' => "U1fx9ngE6i6VkbvlM1mJhxYeuG7QmK2mCNie17meNGsTJx0Plg"
-);
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
 
-$url = "https://api.twitter.com/1.1/statuses/user_timeline.json";
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/main.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="assets/js/hover.zoom.js"></script>
+    <script src="assets/js/hover.zoom.conf.js"></script>
+      <script type="text/javascript" scr="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+              <link rel=stylesheet href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
     
-$requestMethod = "GET";
 
-if (isset($_GET['user']))  {$user = $_GET['user'];}  else {$user  = "iagdotme";}
-if (isset($_GET['count'])) {$user = $_GET['count'];} else {$count = 20;}
+	<!-- +++++ Welcome Section +++++ -->
+	<div id="ww">
+	    <div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2 centered">
+					<img src="assets/img/user.png" alt="Stanley">
+					<h1>IS218 Twitter Application</h1>
+                    <p>Click on some links below!</p>
+				
+				</div><!-- /col-lg-8 -->
+			</div><!-- /row -->
+	    </div> <!-- /container -->
+	</div><!-- /ww -->
+	
+	
+	
+	<div class="container pt">
+		<div class="row mt centered">	
+			<div class="col-lg-4">
+				<div class="accordion" id="accordion2">
+                      <div class="accordion-group">
+                        <div class="accordion-heading">
+                          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                            <h1>Timeline</h1>
+                          </a>
+                        </div>
+                        <div id="collapseOne" class="accordion-body collapse in">
+                          <div class="accordion-inner">
+                              <?php
+                                    require'autoloader.php';
+                                    $url = 'followers/ids.json';
+                                    $getfield = '?screen_name=J7mbo';
+                                    \Classes\TwitterFunctions::getfollowers($url, $getfield);
+                                        
+                                    
+                                    
+    
+
+                            
+                            
+                            
+                            
+                            
+                            ?>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="accordion-group">
+                        <div class="accordion-heading">
+                          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                            <h1>Friends</h1>
+                          </a>
+                        </div>
+                        <div id="collapseTwo" class="accordion-body collapse">
+                          <div class="accordion-inner">
+                            Anim pariatur cliche...
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+				</div><!-- /col-lg-4 -->
+			
+			</div>
+		
+		</div>
+	</>
+	
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/js/bootstrap.min.js"></script>
+  </body>
+</html>
 
 
-$getfield = "?screen_name=$user&count=$count";
 
-$twitter = new TwitterAPIExchange($settings);
 
-$string = json_decode($twitter->setGetfield($getfield)
-             ->buildOauth($url, $requestMethod)
-             ->performRequest(),$assoc = TRUE);
-
-if($string["errors"][0]["message"] != "") {echo "<h3>Sorry, there was a problem.</h3><p>Twitter returned the following error message:</p><p><em>".$string[errors][0]["message"]."</em></p>";exit();}
-
-foreach($string as $items)
-    {
-        echo "Time and Date of Tweet: ".$items['created_at']."<br />";
-        echo "Tweet: ". $items['text']."<br />";
-        echo "Tweeted by: ". $items['user']['name']."<br />";
-        echo "Screen name: ". $items['user']['screen_name']."<br />";
-        echo "Followers: ". $items['user']['followers_count']."<br />";
-        echo "Friends: ". $items['user']['friends_count']."<br />";
-        echo "Listed: ". $items['user']['listed_count']."<br />";
-    }
- 
-
-?>
+    
