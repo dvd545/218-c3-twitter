@@ -56,28 +56,21 @@
                       <div class="accordion-group">
                         <div class="accordion-heading">
                           <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                            <h1>Timeline</h1>
+                            <h1>Friends</h1>
                           </a>
                         </div>
                         <div id="collapseOne" class="accordion-body collapse in">
                           <div class="accordion-inner">
                               <?php
+                                    error_reporting(E_ALL | E_STRICT);
+
                                     require 'autoloader.php';
                                     $url = 'followers/ids.json';
                                     $getfield = '?screen_name=gizmodo';
                                     $settings = \Classes\Config::password();
-                                    $object = \Classes\TwitterFunctions::getfollowers($url, $getfield, $settings);
+                                    $object = \Classes\TwitterFunctions::get_field($url, $getfield, $settings);
                                     //\Classes\HtmlFunctions::print_timeline($object);
-                                      print_r($object);                                  
-                                    
-                                    
-    
-
-                            
-                            
-                            
-                            
-                            
+                                   
                             ?>
                             </div>
                         </div>
@@ -85,22 +78,75 @@
                       <div class="accordion-group">
                         <div class="accordion-heading">
                           <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                            <h1>Friends</h1>
+                            <h1>Timeline</h1>
                           </a>
                         </div>
                         <div id="collapseTwo" class="accordion-body collapse">
                           <div class="accordion-inner">
-                            Anim pariatur cliche...
+                              <?php
+                              $url = 'statuses/user_timeline.json';
+                                    $getfield = '?screen_name=gizmodo';
+                                    $settings = \Classes\Config::password();
+                                    $object = \Classes\TwitterFunctions::get_field($url, $getfield, $settings);
+                                    $feed = \Classes\HtmlFunctions::print_timeline($object);
+                                   
+                            ?>
+                              
                           </div>
                         </div>
                       </div>
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse3">
+                            <h1>Timeline</h1>
+                          </a>
+                        </div>
+                        <div id="collapse3" class="accordion-body collapse">
+                          <div class="accordion-inner">
+                              <?php
+                              $url = 'statuses/user_timeline.json';
+                                    $getfield = '?screen_name=gizmodo';
+                                    $settings = \Classes\Config::password();
+                                    $object = \Classes\TwitterFunctions::get_field($url, $getfield, $settings);
+                                    $feed = \Classes\HtmlFunctions::print_timeline($object);
+                                   
+                            ?>
+                              
+                          </div>
+                        </div>
+                      </div>
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse4">
+                            <h1>Tweet</h1>
+                          </a>
+                        </div>
+                        <div id="collapse4" class="accordion-body collapse">
+                          <div class="accordion-inner">
+                              <?php
+                              $url = 'statuses/update.json';
+                                    $postfield = array(
+                                            'status' => 'posting from another app!'
+                                    );
+                                    $settings = \Classes\Config::password();
+                                    $object = \Classes\TwitterFunctions::post_field($url, $postfield, $settings);
+                                    \Classes\HtmlFunctions::tweet_success();
+                            ?>
+                              
+                          </div>
+                        </div>
+                      </div>
+                    
+                         
+                        
                     </div>
 				</div><!-- /col-lg-4 -->
 			
 			</div>
+      </div>
+    
 		
-		</div>
-	</>
+
 	
 
     <!-- Bootstrap core JavaScript

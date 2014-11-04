@@ -4,8 +4,7 @@ namespace Classes;
 class HtmlFunctions {
     public static function print_timeline($string){
         
-        $table = "<h1>Twitter Timeline</h1>";
-        $table .= "<table border = 3>";     
+        $table = "<table border = 2>";     
         $table .= "
         
                 <tr>    
@@ -75,7 +74,13 @@ class HtmlFunctions {
     
     
     
-}
+    }
+    
+    public static function tweet_success(){
+        echo "<h3>Tweet Sent!</h1>";
+    
+    
+    }
 }
 
 
