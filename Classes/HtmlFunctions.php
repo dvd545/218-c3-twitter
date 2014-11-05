@@ -34,8 +34,7 @@ class HtmlFunctions {
             echo $table;
     }
     public static function show_friends($string){
-        $table = "<h1>Friends </h1>";
-        $table .= "<table border = 3>";     
+        $table = "<table border = 3>";     
         $table .= "
         
                 <tr>    

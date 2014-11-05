@@ -56,20 +56,20 @@
                       <div class="accordion-group">
                         <div class="accordion-heading">
                           <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                            <h1>Friends</h1>
+                            <h1>test</h1>
                           </a>
                         </div>
                         <div id="collapseOne" class="accordion-body collapse in">
                           <div class="accordion-inner">
                               <?php
-                                    error_reporting(E_ALL | E_STRICT);
+                                    //error_reporting(E_ALL | E_STRICT);
 
                                     require 'autoloader.php';
                                     $url = 'followers/ids.json';
                                     $getfield = '?screen_name=gizmodo';
                                     $settings = \Classes\Config::password();
                                     $object = \Classes\TwitterFunctions::get_field($url, $getfield, $settings);
-                                    //\Classes\HtmlFunctions::print_timeline($object);
+//\Classes\HtmlFunctions::print_timeline($object);
                                    
                             ?>
                             </div>
@@ -78,20 +78,20 @@
                       <div class="accordion-group">
                         <div class="accordion-heading">
                           <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                            <h1>Timeline</h1>
+                            <h1>Friends</h1>
                           </a>
                         </div>
                         <div id="collapseTwo" class="accordion-body collapse">
                           <div class="accordion-inner">
                               <?php
-                              $url = 'statuses/user_timeline.json';
-                                    $getfield = '?screen_name=gizmodo';
+                                    $url = 'friends/list.json';
+                                    $getfield = '?screen_name=lifehacker';
                                     $settings = \Classes\Config::password();
-                                    $object = \Classes\TwitterFunctions::get_field($url, $getfield, $settings);
-                                    $feed = \Classes\HtmlFunctions::print_timeline($object);
-                                   
-                            ?>
-                              
+                                    $object2 = \Classes\TwitterFunctions::get_field($url, $getfield, $settings);
+                            print_r($object2);
+
+                                    $feed = \Classes\HtmlFunctions::show_friends($object);
+                              ?>
                           </div>
                         </div>
                       </div>
