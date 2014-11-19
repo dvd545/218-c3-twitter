@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html class="no-js" lang="">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,8 +17,6 @@
     <link href="assets/css/main.css" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="assets/js/hover.zoom.js"></script>
-    <script src="assets/js/hover.zoom.conf.js"></script>
       <script type="text/javascript" scr="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
               <link rel=stylesheet href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
 
@@ -53,24 +52,23 @@
 		<div class="row mt centered">	
 			<div class="col-lg-4">
 				<div class="accordion" id="accordion2">
-                      <div class="accordion-group">
+                    <div class="accordion-group">
                         <div class="accordion-heading">
-                          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                            <h1>test</h1>
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                            <h1>Mentions</h1>
                           </a>
                         </div>
-                        <div id="collapseOne" class="accordion-body collapse in">
+                            <h3>Mentions of Leonard Lance </h3>
+                        <div id="collapseOne" class="accordion-body collapse in" >
                           <div class="accordion-inner">
                               <?php
-                                    //error_reporting(E_ALL | E_STRICT);
-
+                                    ini_set('display_errors', 'On');
                                     require 'autoloader.php';
-                                    $url = 'followers/ids.json';
-                                    $getfield = '?screen_name=gizmodo';
+                                    $url = 'search/tweets.json';
+                                    $getfield = '?q=replanceNJ7';
                                     $settings = \Classes\Config::password();
-                                    $object = \Classes\TwitterFunctions::get_field($url, $getfield, $settings);
-//\Classes\HtmlFunctions::print_timeline($object);
-                                   
+                                    $object3 = \Classes\TwitterFunctions::get_field($url, $getfield, $settings);
+                                    $feed = \Classes\HtmlFunctions::show_mentions($object3);
                             ?>
                             </div>
                         </div>
@@ -78,7 +76,7 @@
                       <div class="accordion-group">
                         <div class="accordion-heading">
                           <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                            <h1>Friends</h1>
+                            <h1>Friends of Lifehacker</h1>
                           </a>
                         </div>
                         <div id="collapseTwo" class="accordion-body collapse">
@@ -88,9 +86,7 @@
                                     $getfield = '?screen_name=lifehacker';
                                     $settings = \Classes\Config::password();
                                     $object2 = \Classes\TwitterFunctions::get_field($url, $getfield, $settings);
-                            print_r($object2);
-
-                                    $feed = \Classes\HtmlFunctions::show_friends($object);
+                                    $feed = \Classes\HtmlFunctions::show_friends($object2);
                               ?>
                           </div>
                         </div>
@@ -98,7 +94,7 @@
                     <div class="accordion-group">
                         <div class="accordion-heading">
                           <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse3">
-                            <h1>Timeline</h1>
+                            <h1>Favorite Tweets</h1>
                           </a>
                         </div>
                         <div id="collapse3" class="accordion-body collapse">
@@ -107,8 +103,8 @@
                               $url = 'statuses/user_timeline.json';
                                     $getfield = '?screen_name=gizmodo';
                                     $settings = \Classes\Config::password();
-                                    $object = \Classes\TwitterFunctions::get_field($url, $getfield, $settings);
-                                    $feed = \Classes\HtmlFunctions::print_timeline($object);
+                                    $object4 = \Classes\TwitterFunctions::get_field($url, $getfield, $settings);
+                                    $feed = \Classes\HtmlFunctions::print_Favoritetweet($object4);
                                    
                             ?>
                               
